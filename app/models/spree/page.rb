@@ -1,11 +1,10 @@
 module Spree
   class Page < Spree::Base
     extend FriendlyId
-    friendly_id :foreign_link, use: :slugged
-    validates :foreign_link, uniqueness: true
+    friendly_id :slug, use: :slugged
 
     default_scope { order(position: :asc) }
-
+    
     has_and_belongs_to_many :stores, join_table: 'spree_pages_stores'
 
     validates :title, presence: true
